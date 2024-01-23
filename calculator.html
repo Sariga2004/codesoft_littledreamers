@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background:white; /* Background color for the entire page */
+    }
+
+    .calculator {
+      display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 290px;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-radius: 12px;
+    border: 1px solid blue;
+    padding: 20px;
+    background-color: black;
+    }
+
+    #display {
+      width: 95%;
+      margin-bottom: 10px;
+      color: white;
+      padding: 8px;
+      font-size: 16px;
+      backdrop-filter: blur(16px) saturate(180%);
+    background: linear-gradient(45deg, rgb(114, 114, 114), #494949);
+    border-radius: 12px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      color:white;
+      backdrop-filter: blur(16px) saturate(180%);
+    background: linear-gradient(45deg, transparent, #494949);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    }
+  </style>
+  <title>Calculator</title>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="buttons">
+      <button onclick="clearDisplay()" style="color: red;">C</button>
+      <button onclick="appendToDisplay('/')" style="color: deepskyblue;">/</button>
+      <button onclick="appendToDisplay('%')" style="color: deepskyblue;">%</button>
+      <button style="color: deepskyblue;" onclick="backspace()">
+        <i class="fas fa-backspace"></i>
+    </button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('*')" style="color: deepskyblue;">*</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')" style="color: deepskyblue;">-</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('+')" style="color: deepskyblue;">+</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="calculateResult()"style="color: deepskyblue;">=</button>
+      
+      
+    </div>
+  </div>
+  <script>
+    let display = document.getElementById('display');
+
+    function appendToDisplay(value) {
+      display.value += value;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function calculateResult() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
